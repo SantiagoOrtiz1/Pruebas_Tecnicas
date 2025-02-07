@@ -1,17 +1,17 @@
- window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
+	let input = document.querySelector(".buscador");
+	let text = document.querySelector(".texto");
 
-    let input = document.querySelector(".buscador");
-    let text = document.querySelector(".texto");
+	input.addEventListener("keydown", (e) => {
+		let search = input.value;
 
-    input.addEventListener("keydown", (e) => {
+		if (search.trim() != "" && e.code == "Enter") {
+			let regExp = new RegExp(search, "gi");
 
-        let search = input.value;
-
-        if (search.trim() != "" && e.code == "Enter"){
-            let regExp = new RegExp(search, "gi");
-
-            text.innerHTML = text.textContent.replace(regExp, "<span class='text__search'>$&</span>");
-        }
-    })
-
- })
+			text.innerHTML = text.textContent.replace(
+				regExp,
+				"<span class='text__search'>$&</span>"
+			);
+		}
+	});
+});
